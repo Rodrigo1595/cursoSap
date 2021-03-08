@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="nombreTienda">Tiendita Online</title>
+    <h1 style="text-align: center;">Bienvenida/o a la 'Tiendita Online'</h1>
+    <style type="text/css">
+        body {
+            font-family: arial;
+        }
+
+        form {
+            width: 800px;
+            margin: 20px auto 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="datos" onsubmit="return validar()">
+        <fieldset>
+            <legend>Porfavor indique sus datos: al ingresarlos clickee afuera para ser validado</legend>
+            <label for="registro_nombre">Nombre:</label><input type="text" name="nombre" onfocusout="validar()"
+                id="registro_nombre">
+            <p id='pNombre'></p>
+            <label for="registro_email">Email:</label><input type="text" name="email" id="mail" onfocusout="validar()"
+                id="registro_email">
+            <p id='pEmail'></p>
+            <label for="registro_dni">DNI:</label><input type="text" name="dni" onfocusout="validar()">
+            <p id='pDNI'></p>
+            <label for="registro_fecha">Fecha de Nacimiento:</label><input type="date" name="fecha" id='fecha'
+                onfocusout="validar()">
+            <p id='pFecha'></p>
+        </fieldset>
+    </form>
+
+    <form id="productos" style="visibility: hidden;">
+        <fieldset>
+            <legend>PRODUCTOS EN PROMOCION!</legend>
+
+            <h2 id="primerProdID"></h2>
+            <label for="si_no">Desea comprar este producto?</label>
+            <input type='radio' name="primerProducto" value='yes' checked onload="compra()" onclick="compra()">
+            SI
+            </input>
+            <input type='radio' name='primerProducto' value='no' onclick="compra()">
+            NO
+            </input>
+            <br><label for="cantProductosPrimero" id="cantProdPrimero" style="visibility: hidden;">Cuantos productos
+                desea llevar? </label><input style="visibility: hidden" type="text" name="cantProductos1" id="cantProd1"
+                onfocusout="validar()">
+
+            <h2 id='segundoProdID'></h2>
+
+            <label for="si_no_2">Desea comprar este producto?</label>
+            <input type='radio' name="segundoProducto" value='yes' checked onload="compra()" onclick="compra()">
+            SI
+            </input>
+            <input type='radio' name='segundoProducto' value='no' onclick="compra()">
+            NO
+            </input>
+
+            <br><label for="cantProductosSegundo" id="cantProdSegundo" style="visibility: hidden;">Cuantos productos
+                desea llevar? </label>
+            <input style="visibility: hidden" type="text" name="cantProductos2" id="cantProd2" onfocusout="validar()">
+            <br>
+            <p id="sumaTotales"></p>
+            <br><label for="abonoTarj" id="abonoTarjId" style="visibility: visible;">Abona con tarjeta ? </label>
+            <p id="Abono">
+                <input type='radio' name="abono" value='yes' checked onload="compra()" onclick="abono()">
+                SI
+                </input>
+                <input type='radio' name='abono' value='no' onclick="abono()">
+                NO
+                </input>
+            </p>
+        </fieldset>
+    </form>
+
+
+
+
+</body>
+
+</html>
+
+<script src="ejercicioEntregar.js"></script>

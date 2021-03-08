@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador Usuarios</title>
+</head>
+<style>
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<body>
+    <h1>Seleccionar opcion:</h1>
+    <button id="botonBuscar" onclick="buscador()">Buscar</button>
+    <p hidden id="parrafobuscar">
+        <label for="tipo">Escribir tipo de busqueda:</label><input type="text" id="tipoBusqueda">
+        <label for="busqueda">Ingresar datos aqui:</label><input type="text" id='valorBusqueda'></input>
+        <br><button onclick="filtrarXNombre()">BUSCAR!</button>
+    </p><br>
+    <button id="botonListar" onclick="listar()">Listar</button>
+    <br>
+    <div hidden id='divListar'>
+        <table id="tablaListado">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Email</th>
+            </tr>
+        </table>
+    </div>
+    <button id="menu" onclick="menu()" hidden>Volver al menu</button>
+    <button id="botonSalir">Salir</button>
+
+</body>
+
+</html>
+<script src="ejerciciosDia4.js"></script>

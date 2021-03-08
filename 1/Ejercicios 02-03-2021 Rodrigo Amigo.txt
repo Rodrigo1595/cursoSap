@@ -1,0 +1,184 @@
+1.-
+function numerosIncrementales(numero){
+    let numeros = new Array();
+    for (i=0;i<numero;i++){
+        numeros.push(i);
+    }
+    return numeros;
+};
+
+//NumeroPedir = prompt("Ingresar largo de numero en arreglo :");
+//Creo que estoy aplicando mal el prompt o la menos no me lo toma , lo ocupe en google si (pues tiene interfaz)
+//y funca en la consola , por ahora lo dejare comentado y utilizare numeros cualquiera para probar.
+
+arregloFinal = numerosIncrementales(7);
+
+console.log(arregloFinal);
+
+2.-
+function numerosIncrementales(numero){
+    var numeros = new Array();
+    for (i=0;i<numero;i++){
+        if (i%2 == 0){
+        numeros.push(0);
+        }else{
+            numeros.push(i)
+        }
+
+    }
+    return numeros;
+};
+
+//NumeroPedir = prompt("Ingresar largo de numero en arreglo :");
+
+arregloFinal = numerosIncrementales(4);
+
+console.log(arregloFinal);
+
+3.-
+function valorMax(numero){
+    return Math.max.apply(null,numero);
+}
+var x = [10,24,36,7,98,11,14,20];
+
+final = valorMax(x);
+
+console.log(final);
+
+
+4.-
+function valorMax(numero){
+    let max = Math.max.apply(null,numero);
+    let posicion = numero.indexOf(max);
+    let resultadofinal = new Array();
+    resultadofinal.push(max,posicion) ;
+    return resultadofinal;
+}
+var x = [10,24,36,7,98,11,14,20];
+
+final = valorMax(x);
+
+console.log(final);
+
+5.-
+function maxRepite(arr){
+    let maximo = Math.max.apply(null,arr);
+    let cantidadRepeticiones = 0;
+    let arregloFinal = new Array();
+    for(i=0;i<arr.length;i++){
+        if(arr[i] == maximo){
+            cantidadRepeticiones++;
+        } 
+    }
+    arregloFinal.push(maximo,cantidadRepeticiones);
+    return arregloFinal;
+ }
+
+var arreglo = [10,24,36,7,98,11,14,20,98,14,10];
+
+mostrar=maxRepite(arreglo);
+
+console.log(mostrar);
+
+6.-
+// 1 Iguales
+function arrayIgual(a,b){
+    //Al usar every se puede comparar directamente dentro de otra funcion con el otro array. 
+    //retorna el elemento si es igual y en esta en el mismo indice exacto e itera cada uno de ellos.
+    if(a.length == b.length && a.every(function(element,index){return element === b[index]})){
+        return true;        
+    }else{
+        return false;
+    }
+}
+// 2 Mas Largo
+function arrayMasLargo(a,b){
+    if(a.length > b.length){
+        return ('X es mas largo que Y');
+    }else{
+        return ('Y es mas largo que X');
+    }
+}
+//3 Caracteres en comun
+function caracteresEnComun(a,b){
+   let arrayfinal = new Array();
+   for(i=0;i<a.length;i++){
+    for(j=0;j<b.length;j++){
+        if (a[i]==b[j] ){
+            arrayfinal.push(a[i]);
+            }
+        }
+    }
+    //se utiliza filter y se itera en si mismo sus elementos para comparar si hay duplicados
+    //Lo vi en el mdn de mozilla , esta re bueno.
+    var arraySinRepetir = arrayfinal.filter(function(elemento, index, self) {
+        return index === self.indexOf(elemento);
+    })
+    return arraySinRepetir.length;
+ }
+ 
+
+var X = ['a','l','f','a'];
+var Y = ['a','l','f','a','j','o','r'];
+
+//Verifica si son iguales o no
+var parte1 = arrayIgual(X,Y);
+// Cual de los dos es mas largo
+var parte2 = arrayMasLargo(X,Y);
+//Contador de caracteres iguales
+var parte3 = caracteresEnComun(X,Y);
+console.log(parte1);
+console.log(parte2);
+console.log(parte3);
+
+7.-
+//1 Cual de los dos es mas viejo
+function masViejo(fido,gervasio){
+    if (fido[2]<gervasio[2]){
+        return ('Gervasio es mayor que fido');
+    }else{
+        return('Fido es mayor que Gervasio');
+    }
+}
+//2 Casado
+function casado(fido,gervasio){
+    let array = new Array();
+    if(fido[4] == true){
+        array.push('Fido esta casado');
+    }else{
+        array.push('Fido no esta casado');
+    }
+    if(gervasio[4] == true){
+        array.push('Gervasio esta casado');
+    }else{
+        array.push('Gervasio no esta casado');
+    }
+
+    return array;
+}
+// Aumento
+function calculoAumento(fido,gervasio){
+    fidonuevo = (fido[3].toString());
+    fidonuevo = fidonuevo.split(",");
+    fidonuevo = parseInt(fidonuevo,10);
+    console.log(fidonuevo);
+    gervasionuevo = (gervasio[3].toString())
+    gervasionuevo = gervasionuevo.split(",");
+    gervasionuevo = parseInt(gervasionuevo,10);
+    console.log(gervasionuevo);
+    nuevosueldo = fidonuevo+gervasionuevo*0.15;
+    return nuevosueldo
+}
+
+datos1 = ['Fido','Gomez',26,15000.78,true] ;
+datos2 = ['Gervasio','Fernandez',32,28.550,false];
+
+var uno = masViejo(datos1,datos2);
+console.log(uno);
+var dos = casado(datos1,datos2);
+console.log(dos);
+var tres = calculoAumento(datos1,datos2);
+console.log('El nuevo sueldo de fido es:',tres);
+
+
+
