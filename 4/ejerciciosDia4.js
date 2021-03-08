@@ -48,59 +48,63 @@ function listar() {
     document.getElementById('botonBuscar').hidden = true;
     document.getElementById('divListar').hidden = false;
     document.getElementById('menu').hidden = false;
-    let array = ['id', 'nombre', 'telefono', 'email'];
+
+    var array = ['id', 'nombre', 'telefono', 'email'];
+
     for (i = 0; i < nombresObj.length; i++) {
         let fila = document.createElement('tr');
-        console.log(nombresObj[i]);
-        Object.keys(nombresObj[i]).forEach(function (key) {
-            console.log(key, obj[key]);
+        for (j = 0; j < array.length; j++) {
             let td = document.createElement('td');
-            td.appendChild(document.createTextNode(obj[key]));
+            attribute = array[j];
+            td.appendChild(document.createTextNode(nombresObj[i][`${attribute}`]));
             fila.appendChild(td);
             document.getElementById('tablaListado').appendChild(fila);
-        });
+        }
     };
-
+}
+function menu() {
+    location.reload();
 }
 
-
-    function filtrarXNombre() {
-        //Valores Iniciales para creat tabla con datos
-        let valorTipo = document.getElementById('tipoBusqueda').value;
-        let valorBusqueda = document.getElementById('valorBusqueda').value;
-        let resultado = nombresObj.filter(
-            function (encontrar) {
-                let encontrado = encontrar[valorTipo];
-                encontrado = encontrado.toLowerCase()
-                valorBusqueda = valorBusqueda.toLowerCase()
-                return encontrado === valorBusqueda;
-            });
-        //Resultados rescatados del objeto
-        if (resultado.length != 0) {
-            //agregar
-            let id = resultado[0].id;
-            let nombre = resultado[0].nombre;
-            let telefono = resultado[0].telefono;
-            let email = resultado[0].email;
-            //ordenados en 1 array
-            let array = [id, nombre, telefono, email];
-            alert(`Los datos que se encontraron son :` + `
+function filtrarXNombre() {
+    //Valores Iniciales para creat tabla con datos
+    let valorTipo = document.getElementById('tipoBusqueda').value;
+    let valorBusqueda = document.getElementById('valorBusqueda').value;
+    let resultado = nombresObj.filter(
+        function (encontrar) {
+            let encontrado = encontrar[valorTipo];
+            encontrado = encontrado.toLowerCase()
+            valorBusqueda = valorBusqueda.toLowerCase()
+            return encontrado === valorBusqueda;
+        });
+    //Resultados rescatados del objeto
+    if (resultado.length != 0) {
+        //agregar
+        let id = resultado[0].id;
+        let nombre = resultado[0].nombre;
+        let telefono = resultado[0].telefono;
+        let email = resultado[0].email;
+        //ordenados en 1 array
+        let array = [id, nombre, telefono, email];
+        alert(`Los datos que se encontraron son :` + `
     ID : ${array[0]}
     Nombre : ${array[1]} 
     Telefono: ${array[2]} 
     Email: ${array[3]} `)
-        } else {
-            alert('No se encontro datos con estos parametros.')
-        }
-        let seguir = confirm('Quiere buscar otro usuario?');
+    } else {
+        alert('No se encontro datos con estos parametros.')
+    }
+    let seguir = confirm('Quiere buscar otro usuario?');
 
-        if (!seguir) {
-            location.reload();
-        }
+    if (!seguir) {
+        location.reload();
+    }
 
-    };
+};
 
 
-    function salir() {
-
-    };
+function salir() {
+    if (confirm("Esta seguro de salir?")) {
+        location.replace('about:blank')
+    }
+};
